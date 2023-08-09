@@ -97,7 +97,7 @@ pub struct ContractCreator {
 }
 
 impl From<Block> for OtsBlock {
-    fn from(block: Block) -> Self {
+    fn from(mut block: Block) -> Self {
         let transaction_count = match &block.transactions {
             BlockTransactions::Full(t) => t.len(),
             BlockTransactions::Hashes(t) => t.len(),

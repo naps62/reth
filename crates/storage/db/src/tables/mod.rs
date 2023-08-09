@@ -184,7 +184,9 @@ tables!([
     (TxSenders, TableType::Table),
     (SyncStage, TableType::Table),
     (SyncStageProgress, TableType::Table),
-    (PruneCheckpoints, TableType::Table)
+    (PruneCheckpoints, TableType::Table),
+    // TODO add feature flag here
+    (ContractCreators, TableType::Table)
 ]);
 
 #[macro_export]
@@ -421,6 +423,11 @@ table!(
     ( PruneCheckpoints ) PrunePart | PruneCheckpoint
 );
 
+// TODO: add feature flag here
+table!(
+    ( ContractCreators ) Address | Address
+);
+
 /// Alias Types
 
 /// List with transaction numbers.
@@ -461,6 +468,9 @@ mod tests {
         (TableType::Table, SyncStage::const_name()),
         (TableType::Table, SyncStageProgress::const_name()),
         (TableType::Table, PruneCheckpoints::const_name()),
+        // TODO: how to?
+        // #[cfg(feature = "otterscan")]
+        // (TableType::Table, ContractCreators::const_name()),
     ];
 
     #[test]
